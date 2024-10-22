@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .login-container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+        .link-btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 25px;
+            font-size: 18px;
+            color: white;
+            background-color: #4CAF50;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .link-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login-page" class="login-container">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <input type="button" value="Login" onclick="login()">
+        <p id="error-message" style="color: red;"></p>
+    </div>
+
+    <div id="links-page" style="display:none;">
+        <h1>Open Links</h1>
+        <a href="https://www.google.com" target="_blank" class="link-btn">Google</a>
+        <a href="https://duckduckgo.com/aichat" target="_blank" class="link-btn">DuckDuckGo AI Chat</a>
+        <a href="https://www.chatgpt.com" target="_blank" class="link-btn">ChatGPT</a>
+    </div>
+
+    <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var errorMessage = document.getElementById("error-message");
+
+            if (username === "aaa" && password === "bbb") {
+                document.getElementById("login-page").style.display = "none";
+                document.getElementById("links-page").style.display = "block";
+            } else {
+                errorMessage.textContent = "Incorrect username or password!";
+            }
+        }
+    </script>
+
+</body>
+</html>
