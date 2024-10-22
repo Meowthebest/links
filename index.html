@@ -138,16 +138,23 @@
         }
 
         
-        function copyToClipboard(id) {
-            var text = document.getElementById(id).textContent.split(": ")[1];
-            var textArea = document.createElement("textarea");
-            textArea.value = text;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand("copy");
-            document.body.removeChild(textArea);
-            alert(text + " copied to clipboard!");
-        }
+function copyToClipboard(id) {
+    var text;
+    if (id === 'email') {
+        text = "s0000003850@ud.ac.ae";  // Hardcoded email
+    } else if (id === 'password') {
+        text = "0503428233";  // Hardcoded password
+    }
+
+    var textArea = document.createElement("textarea");
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+    alert(text + " copied to clipboard!");
+}
+
 
         function unlockEmail() {
             var password = document.getElementById("unlock-password").value;
