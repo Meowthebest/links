@@ -107,6 +107,12 @@
         <a href="https://www.chatgpt.com" target="_blank" class="link-btn">ChatGPT</a>
         <a href="https://quillbot.com/paraphrasing-tool" target="_blank" class="link-btn">QuillBot Paraphrasing</a>
 
+        <!-- URL Input Section -->
+        <div>
+            <input type="text" id="custom-url" placeholder="Enter a website URL">
+            <input type="button" value="Go" onclick="openCustomUrl()">
+        </div>
+
         <!-- Hidden email section -->
         <div id="protected-section">
             <p>
@@ -139,24 +145,34 @@
             }
         }
 
+        function openCustomUrl() {
+            var customUrl = document.getElementById("custom-url").value;
+            if (customUrl) {
+                if (!customUrl.startsWith('http://') && !customUrl.startsWith('https://')) {
+                    customUrl = 'https://' + customUrl;
+                }
+                window.open(customUrl, '_blank');
+            } else {
+                alert("Please enter a valid URL");
+            }
+        }
         
-function copyToClipboard(id) {
-    var text;
-    if (id === 'email') {
-        text = "s0000003850@ud.ac.ae";  // Hardcoded email
-    } else if (id === 'password') {
-        text = "0503428233";  // Hardcoded password
-    }
+        function copyToClipboard(id) {
+            var text;
+            if (id === 'email') {
+                text = "s0000003850@ud.ac.ae";  // Hardcoded email
+            } else if (id === 'password') {
+                text = "0503428233";  // Hardcoded password
+            }
 
-    var textArea = document.createElement("textarea");
-    textArea.value = text;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textArea);
-    alert(text + " copied to clipboard!");
-}
-
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+            alert(text + " copied to clipboard!");
+        }
 
         function unlockEmail() {
             var password = document.getElementById("unlock-password").value;
