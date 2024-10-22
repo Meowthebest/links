@@ -86,35 +86,54 @@
 </head>
 <body>
 
-    <div id="login-page" class="login-container">
-        <h2>Login</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-        <input type="button" value="Login" onclick="login()">
-        <p id="error-message"></p>
-    </div>
-
     <div id="links-page" class="login-container">
-        <h2>Open Links</h2>
-        <a href="https://www.google.com" target="_blank" class="link-btn">Google</a>
-        <a href="https://duckduckgo.com/aichat" target="_blank" class="link-btn">DuckDuckGo AI Chat</a>
-        <a href="https://www.chatgpt.com" target="_blank" class="link-btn">ChatGPT</a>
+    <h2>Open Links</h2>
+    <a href="https://www.google.com" target="_blank" class="link-btn">Google</a>
+    <a href="https://duckduckgo.com/aichat" target="_blank" class="link-btn">DuckDuckGo AI Chat</a>
+    <a href="https://www.chatgpt.com" target="_blank" class="link-btn">ChatGPT</a>
+    <a href="https://quillbot.com/" target="_blank" class="link-btn">QuillBot Paraphrasing</a>
+
+    <!-- Hidden email section -->
+    <div id="protected-section" style="display:none;">
+        <p>
+            <strong>Note:</strong> 
+            <span id="email" style="cursor: pointer;" onclick="copyToClipboard('email')">Email: s0000003850@ud.ac.ae</span> | 
+            <span id="password" style="cursor: pointer;" onclick="copyToClipboard('password')">Password: 0503428233</span>
+        </p>
     </div>
 
-    <script>
-        function login() {
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-            var errorMessage = document.getElementById("error-message");
+    <!-- Password input for unlocking -->
+    <div id="unlock-section">
+        <p>Enter password to unlock email:</p>
+        <input type="password" id="unlock-password" placeholder="Enter password">
+        <input type="button" value="Unlock" onclick="unlockEmail()">
+        <p id="unlock-error" style="color: red;"></p>
+    </div>
+</div>
 
-            if (username === "aaa" && password === "bbb") {
-                document.getElementById("login-page").style.display = "none";
-                document.getElementById("links-page").style.display = "block";
-            } else {
-                errorMessage.textContent = "Incorrect username or password!";
-            }
+<script>
+    function copyToClipboard(id) {
+        var text = document.getElementById(id).textContent.split(": ")[1];
+        var textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        alert(text + " copied to clipboard!");
+    }
+
+    function unlockEmail() {
+        var password = document.getElementById("unlock-password").value;
+        var errorMessage = document.getElementById("unlock-error");
+
+        if (password === "aaa123") {
+            document.getElementById("protected-section").style.display = "block";
+            document.getElementById("unlock-section").style.display = "none";
+            errorMessage.textContent = "";  // Clear error message
+        } else {
+            errorMessage.textContent = "Incorrect password. Please try again.";
         }
-    </script>
+    }
+</script>
 
-</body>
-</html>
